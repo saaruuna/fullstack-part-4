@@ -2,7 +2,7 @@ POST http://localhost:3003/api/blogs
 content-type: application/json
 
 {
-    "title": "How to DIY",
+    "title": "How to DIY 2",
     "author": "Ada Lovelace",
     "url": "www.howtodiy.net",
     "likes": 900
