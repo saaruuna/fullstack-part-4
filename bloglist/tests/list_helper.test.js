@@ -89,4 +89,46 @@ describe('list_helper', () => {
 
     expect(listHelper.mostBlogs(blogs)).toEqual(prolific)
   })
+
+  test('mostBlogs returns author with most blogs', () => {
+    const liked = {
+        author: "David Cronenberg",
+        likes: 210
+    }
+
+    const blogs = [
+        {
+            title: "Blog 1", 
+            author: "David Cronenberg", 
+            url: "www.blog1.com", 
+            likes: 4
+        }, 
+        {
+            title: "Blog 2", 
+            author: "David Cronenberg", 
+            url: "www.blog1.com", 
+            likes: 200
+        }, 
+        {
+            title: "Blog 3", 
+            author: "David Cronenberg", 
+            url: "www.blog1.com", 
+            likes: 6
+        }, 
+        {
+            title: "Blog 2", 
+            author: "Quentin Tarantino", 
+            url: "www.blog1.com", 
+            likes: 5
+        }, 
+        {
+            title: "Blog 2", 
+            author: "Quentin Tarantino", 
+            url: "www.blog1.com", 
+            likes: 3
+        }, 
+    ]
+
+    expect(listHelper.mostLikes(blogs)).toEqual(liked)
+  })
 })
