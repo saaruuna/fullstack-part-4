@@ -47,4 +47,46 @@ describe('list_helper', () => {
 
     expect(listHelper.favoriteBlog(blogs)).toEqual(veryLiked)
   })
+  
+  test('mostBlogs returns author with most blogs', () => {
+    const prolific = {
+        author: "David Cronenberg",
+        blogs: 3
+    }
+
+    const blogs = [
+        {
+            title: "Blog 1", 
+            author: "David Cronenberg", 
+            url: "www.blog1.com", 
+            likes: 4
+        }, 
+        {
+            title: "Blog 2", 
+            author: "David Cronenberg", 
+            url: "www.blog1.com", 
+            likes: 3
+        }, 
+        {
+            title: "Blog 3", 
+            author: "David Cronenberg", 
+            url: "www.blog1.com", 
+            likes: 3
+        }, 
+        {
+            title: "Blog 2", 
+            author: "Quentin Tarantino", 
+            url: "www.blog1.com", 
+            likes: 3
+        }, 
+        {
+            title: "Blog 2", 
+            author: "Quentin Tarantino", 
+            url: "www.blog1.com", 
+            likes: 3
+        }, 
+    ]
+
+    expect(listHelper.mostBlogs(blogs)).toEqual(prolific)
+  })
 })
