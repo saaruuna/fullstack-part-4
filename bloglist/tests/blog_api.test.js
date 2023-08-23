@@ -38,6 +38,37 @@ describe("blogs", () => {
         expect(response.body[0].id).toBeDefined()
     })
 
+    test('posting blog works', async () => {
+        const payload = {
+          "title": "How to DIY 3",
+          "author": "Ada Lovelace",
+          "url": "www.howtodiy.net",
+          "likes": 45,
+        } 
+
+        const postResponse = await api
+        .post('/api/blogs')
+        .send(payload)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .expect(201)
+
+        const getResponse = await api.get('/api/blogs')
+
+        const ids = getResponse.body.map(blog => blog.id)
+        const titles = getResponse.body.map(blog => blog.title)
+        const authors = getResponse.body.map(blog => blog.author)
+        const urls = getResponse.body.map(blog => blog.url)
+        const likes = getResponse.body.map(blog => blog.likes)
+
+        expect(getResponse.body).toHaveLength(initialBlogs.length + 1)
+        expect(ids).toContain(postResponse.body.id)
+        expect(titles).toContain(postResponse.body.title)
+        expect(authors).toContain(postResponse.body.author)
+        expect(urls).toContain(postResponse.body.url)
+        expect(likes).toContain(postResponse.body.likes)
+    })
+
     afterAll(async () => {
       await mongoose.connection.close()
     })
